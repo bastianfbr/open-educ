@@ -1,12 +1,20 @@
+<?php
+  session_start();
+  if(isset($_GET['deconnexion']))
+  { 
+      if($_GET['deconnexion']==true)
+      {  
+        session_unset();
+        header("location:index.php");
+      }
+  }  
+?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>OpenEduc - Administration</title>
+    <title>OpenEduc - L'Éducation Ouverte</title>
     <link rel="icon" type="image/png" href="./img/white_logo.png" />
 
     <!-- Bootstrap core CSS -->
@@ -27,30 +35,40 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-turc mb-4 logo">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="./img/white_logo.png" width="100" alt="logo"></a>
+    <a class="navbar-brand" href="index.php"><img src="./img/white_logo.png" width="100" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link h3" href="projet.html">Projet</a>
+          <a class="nav-link h3" href="projet.php">Projet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3" href="partenaires.html">Partenaires</a>
+          <a class="nav-link h3" href="partenaires.php">Partenaires</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3" href="donnees.html">Données</a>
+          <a class="nav-link h3" href="donnees.php">Données</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3" href="rgpd.html">RGPD</a>
+          <a class="nav-link h3" href="rgpd.php">RGPD</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3 active" href="admin.html">Administration</a>
+          <a class="nav-link h3" href="admin.php">Administration</a>
         </li>
+      <!-- Affichage se connecter ou se deconnecter-->
+      <?php if(isset($_SESSION['mail'])){
+          ?>
         <li class="nav-item">
-          <button onclick="window.location.href = 'connexion.html';" class="w-100 btn btn-lg bg-light pull-right" type="submit">Se connecter</button>
+          <button onclick="window.location.href = 'index.php?deconnexion=true';" class="w-100 btn btn-lg bg-light" type="submit">Déconnexion</button>
         </li>
+          <?php }
+          else{ ?>
+        <li class="nav-item">
+          <button onclick="window.location.href = 'connexion.php';" class="w-100 btn btn-lg bg-light" type="submit">Se connecter</button>
+        </li>
+            <?php } ?>
+
       </ul>
     </div>
   </div>
@@ -88,11 +106,7 @@
 </div>
 </div>
 
-
-
-
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      
   </body>
 </html>

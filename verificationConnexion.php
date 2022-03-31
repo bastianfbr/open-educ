@@ -27,7 +27,7 @@
               if($count!=0) // nom d'utilisateur et mot de passe correctes
               {
                 $_SESSION['mail'] = $mail;
-                header('Location: index.html');
+                header('Location: index.php');
               }
               else
               {
