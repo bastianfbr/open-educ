@@ -1,12 +1,20 @@
+<?php
+  session_start();
+  if(isset($_GET['deconnexion']))
+  { 
+      if($_GET['deconnexion']==true)
+      {  
+        session_unset();
+        header("location:index.php");
+      }
+  }  
+?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>OpenEduc - Projet</title>
+    <title>OpenEduc - Données</title>
     <link rel="icon" type="image/png" href="./img/white_logo.png" />
 
     <!-- Bootstrap core CSS -->
@@ -27,30 +35,39 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-turc mb-4 logo">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="./img/white_logo.png" width="100" alt="logo"></a>
+    <a class="navbar-brand" href="index.php"><img src="./img/white_logo.png" width="100" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link h3 active" href="projet.html">Projet</a>
+          <a class="nav-link h3" href="projet.php">Projet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3" href="partenaires.html">Partenaires</a>
+          <a class="nav-link h3" href="partenaires.php">Partenaires</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3" href="donnees.html">Données</a>
+          <a class="nav-link h3 active" href="donnees.php">Données</a>
         </li>
         <li class="nav-item">
           <a class="nav-link h3" href="rgpd.html">RGPD</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h3" href="admin.html">Administration</a>
+          <a class="nav-link h3" href="admin.php">Administration</a>
         </li>
+        <!-- Affichage se connecter ou se deconnecter-->
+        <?php if(isset($_SESSION['mail'])){
+          ?>
         <li class="nav-item">
-          <button onclick="window.location.href = 'connexion.html';" class="w-100 btn btn-lg bg-light pull-right" type="submit">Se connecter</button>
+          <button onclick="window.location.href = 'index.php?deconnexion=true';" class="w-100 btn btn-lg bg-light" type="submit">Déconnexion</button>
         </li>
+          <?php }
+          else{ ?>
+        <li class="nav-item">
+          <button onclick="window.location.href = 'connexion.php';" class="w-100 btn btn-lg bg-light" type="submit">Se connecter</button>
+        </li>
+            <?php } ?>
       </ul>
     </div>
   </div>
@@ -61,35 +78,27 @@
       <div class="col">
     <main class="container modal-header">
   <div class="bg-light p-5 rounded">
-    <h1 class="titre">Projet OpenEduc</h1>
-    <p class="lead texte">Contexte et mission du projet OpenEduc</p>
+    <h1 class="titre">OpenEduc</h1>
+    <p class="lead texte">Bienvenue sur le site d'Open Educ : L'éducation ouverte</p>
 
     <img class="mr-3 img-thumbnail float-start" src="./img/open_logo.png" width="200" alt="Logo">
-    <h5 class="mt-0">Projet OpenEduc</h5>
-    <p class="align-content-end texte">Pour l’instant, chaque référent APEA d’école, complète et renvoie un fichier avec toutes les informations après chaque réunion. Ce mode de fonctionnement nécessite un travail administratif conséquent : fusion des fichiers, envoi et réception des
-fichiers. Il n’est pas rare de rencontrer également des problèmes techniques. <br/> <br/> C’est pourquoi, avec l’accord du comité de direction de l’association, il a été décidé de faire appel à la société AlsaNum
-pour informatiser le processus de recueil et diffusion des informations.
-Un site internet dédié devra permettre à chaque référent local d’école de saisir en ligne les informations propres à une
-école.
-Le site devra permettre d’afficher par école toutes les informations disponibles.
-</p> </aside>
+    <h5 class="mt-0">Pages d'OpenEduc</h5>
+    <p class="align-content-end texte">Découvrez donc sur ce site les diverses pages tels que 
+      <br/><a href="">la présentation du projet</a>, <br/> <a href="#">la présentation des partenaires</a>, 
+      <br/> <a href="#">la visualisation des données</a>, <br/> <a href="#">la politique de confidentialité</a> et 
+      <br/> <a href="#">le panel d'administration</a> </p> </aside>
     </div>
 </main>
   </div>
   <div class="col">
     <main class="container modal-header">
   <div class="bg-light p-5 rounded">
-    <h1 class="titre">AlsaNum</h1>
-    <p class="lead texte">L'ESN (Entreprises de Services Numériques) AlsaNum à Strasbourg</p>
+    <h1 class="titre">Un projet AlsaNum</h1>
+    <p class="lead texte">&copy; AlsaNum 2022</p>
 
     <img class="mr-3 img-thumbnail float-start" src="./img/alsanum_logo.png" width="200" alt="Logo">
     <h5 class="mt-0">AlsaNum</h5>
-    <p class="align-content-end texte">Nous délivrons des services qui s’appuient sur les nouvelles technologies et qui permettent aux
-administrations et aux entreprises d’être plus efficientes. <br/> <br/>Grâce à notre expertise des technologies de
-l’information, nous sommes en mesure de prendre en charge l’externalisation des processus métiers de nos
-entreprises clientes. Nous permettons donc à nos clients de se recentrer sur leur métier. Forts de nos huit
-cents collaborateurs répartis dans dix régions en métropole à travers différentes antennes, nous prenons en
-charge les systèmes, les services et les processus qui facilitent la vie quotidienne de nos clients chaque jour</p> </aside>
+    <p class="align-content-end texte">Développé par l'équipe d'AlsaNum</p> </aside>
     </div>
 </main>
   </div>
