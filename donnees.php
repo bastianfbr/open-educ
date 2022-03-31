@@ -7,33 +7,58 @@
       <div class="col">
         <main class="container modal-header">
           <div class="bg-light p-5 rounded">
-            <h1 class="titre">OpenEduc</h1>
-            <p class="lead texte">Bienvenue sur le site d'Open Educ : L'éducation ouverte</p>
-            <img class="mr-3 img-thumbnail float-start" src="./img/open_logo.png" width="200" alt="Logo">
-            <h5 class="mt-0">Pages d'OpenEduc</h5>
-            <p class="align-content-end texte">Découvrez donc sur ce site les diverses pages tels que 
-            <br/><a href="">la présentation du projet</a>, <br/> <a href="#">la présentation des partenaires</a>, 
-            <br/> <a href="#">la visualisation des données</a>, <br/> <a href="#">la politique de confidentialité</a> et 
-            <br/> <a href="#">le panel d'administration</a> </p> </aside>
+            <h1 class="titre">Choix de l'école</h1>
+            <p class="lead texte">Choisissez l'école pour consulter les classes</p>
+            <p class="align-content-end texte"> 
+              <ul class="list-group">
+                <li><button type="button" class="btn btn-primary">ECOLE PRIMAIRE PUBLIQUE DES FONTAINES</button> </li>
+                <li><button type="button" class="btn btn btn-light">ECOLE ELEMENTAIRE PUBLIQUE CHARLES SPINDLER</button></li>
+                <li><button type="button" class="btn btn btn-light">ECOLE ELEMENTAIRE PUBLIQUE GROUPE SCOLAIRE DU ROSENMEER</button></li>
+              </ul> 
+            </p>
           </div>
         </main>
       </div>
-      <div class="col">
-        <main class="container modal-header">
-          <div class="bg-light p-5 rounded">
-            <h1 class="titre">Un projet AlsaNum</h1>
-            <p class="lead texte">&copy; AlsaNum 2022</p>
+    <div class="col">
+    <main class="container modal-header">
+      <div class="bg-light p-5 rounded">
+        <h1 class="titre">Un projet AlsaNum</h1>
+        <p class="lead texte">&copy; AlsaNum 2022</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Niveau</th>
+              <th scope="col">Nom de la classe</th>
+              <th scope="col">Effectif</th>
+            </tr>
+          </thead>
 
-            <img class="mr-3 img-thumbnail float-start" src="./img/alsanum_logo.png" width="200" alt="Logo">
-            <h5 class="mt-0">AlsaNum</h5>
-            <p class="align-content-end texte">Développé par l'équipe d'AlsaNum</p> </aside>
-          </div>
-        </main>
+          <!--Visualisation de données-->
+          <?php
+          $requete = "SELECT * FROM Classe";
+          $result = mysqli_query($db,$requete);
+          while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)){ 
+          ?>
+
+          <tbody>
+            <tr>
+              <th scope="row"><?php echo $row[0] ?></th>
+              <td><?php echo $row[1] ?></td>
+              <td><?php echo $row[2] ?></td>
+              <td><?php echo $row[3] ?></td>
+            </tr>
+          </tbody>
+          <?php } ?>
+
+        </table>
       </div>
-    </div>
+    </main>
   </div>
-
+  </div>
+</div>
+  
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
+  
   </body>
 </html>
