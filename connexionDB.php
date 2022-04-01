@@ -1,7 +1,7 @@
 <?php
     //Connexion à la base de données:
     $db_user = "root";
-    $db_pass= "";
+    $db_pass= "t";
     $db_name= "openeduc";
     $db_host = "localhost";
     $db = mysqli_connect($db_host, $db_user, $db_pass, $db_name)
