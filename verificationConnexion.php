@@ -1,15 +1,7 @@
 <?php //http://www.codeurjava.com/2016/12/formulaire-de-login-avec-html-css-php-et-mysql.html
-      session_start();
+      include 'connexionDB.php';
       if(isset($_POST['mail']) && isset($_POST['password']))
       {
-        
-        //Connexion à la base de données:
-        $db_user = "root";
-        $db_pass= "root";
-        $db_name= "openeduc";
-        $db_host = "localhost";
-        $db = mysqli_connect($db_host, $db_user, $db_pass, $db_name)
-        or die('could not connect to database');
 
         // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
         // pour éliminer toute attaque de type injection SQL et XSS
