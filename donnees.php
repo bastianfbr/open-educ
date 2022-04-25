@@ -37,9 +37,10 @@
 
           <!--Visualisation de données-->
           <?php
-          $requete = "SELECT * FROM Classe WHERE idEcole='".$ecole."'";
-          $result = mysqli_query($db,$requete);
-          while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)){ 
+          if(isset($ecole)){
+            $requete = "SELECT * FROM Classe WHERE idEcole='".$ecole."'";
+            $result = mysqli_query($db,$requete);
+            while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)){ 
           ?>
 
           <tbody>
@@ -50,7 +51,7 @@
               <td><?php echo $row[3] ?></td>
             </tr>
           </tbody>
-          <?php } ?>
+          <?php } }?>
 
         </table>
       </div>
@@ -58,7 +59,7 @@
   </div>
   </div>
 </div>
-  
+
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
   
   </body>
