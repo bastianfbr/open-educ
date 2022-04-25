@@ -21,7 +21,12 @@ body {
   }
 }
 
-a {
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.point {
   text-decoration: none;
 }
 

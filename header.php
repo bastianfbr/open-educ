@@ -60,7 +60,7 @@
                 <!-- Affichage se connecter ou se deconnecter-->
                 <?php if(isset($_SESSION['mail'])){
                 ?>
-                <li class="nav-item">
+                <li class="nav-item point">
                     <button onclick="window.location.href = 'index.php?deconnexion=true';" class="w-100 btn btn-lg bg-light" type="submit">Se déconnecter</button>
                 </li>
 
@@ -68,7 +68,7 @@
                     } else { 
                 ?>
 
-                <li class="nav-item">
+                <li class="nav-item point">
                     <button onclick="window.location.href = 'connexion.php';" class="w-100 btn btn-lg bg-light" type="submit">Se connecter</button>
                 </li>
                 <?php } ?>

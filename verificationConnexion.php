@@ -23,17 +23,17 @@
               }
               else
               {
-                header('Location: connexion.html'); // utilisateur ou mot de passe incorrect
+                header('Location: connexion.php'); // utilisateur ou mot de passe incorrect
               }
           }
         else
           {
-            header('Location: connexion.html'); // utilisateur ou mot de passe vide
+            header('Location: connexion.php'); // utilisateur ou mot de passe vide
           }
       }
       else
       {
-        header('Location: connexion.html'); // utilisateur ou mot de passe vide
+        header('Location: connexion.php'); // utilisateur ou mot de passe vide
       }
       //mysqli_close($db); // fermer la connexion mis de cote suite a des bugs
     ?>
